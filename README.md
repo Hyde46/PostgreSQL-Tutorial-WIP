@@ -1,5 +1,5 @@
 # RikeSQLTutorial
-Tutorial Files for Rikes SQL Tutorial in postgres
+Tutorial Files for Rikes SQL Tutorial in postgres. 
 You should be able to copy and paste all the queries listed in the file(s) directly
 into your postgres terminal prompt to make them work.
 
