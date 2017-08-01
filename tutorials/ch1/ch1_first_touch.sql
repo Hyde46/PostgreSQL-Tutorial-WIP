@@ -100,6 +100,8 @@ TRUNCATE TABLE Animal_Companions;
 -- If more than one table is selected in the FROM part, the RDMS will calculate
 -- a cross product (x) of each row of each table
 -- FROM AxBxCx...xZ
+SELECT companion.*
+FROM Animal_Companions AS companion;
 
 -- (2)WHERE:
 -- This is our FILTER for the table. Each ROW we get by the FROM part will be
@@ -124,7 +126,40 @@ WHERE companion.is_pet;             -- check if the "is_pet" column of the
                                     -- "compaion" row is true. dont take any
                                     -- "false" contenders.
 
--- Since mammoths are not suitable as pets, since they are extinct (duh!)
+-- Mammoths are not suitable as pets, since they are extinct (duh!)
 -- We should remove it from our table. To achieve this we also need to use FILTERS
 DELETE FROM Animal_Companions as companion
 WHERE companion.occupation = 'being nonexistant'; -- Same FILTER logic as above
+-------------------------------------------------------------------------------
+-- Totally Hard Assignment ( THA ) No. 1:
+-- Given the table Animal_Companions defined as
+DROP TABLE IF EXISTS Animal_Companions;
+CREATE TABLE Animal_Companions(
+  animal_name TEXT, -- The name of the animal, given by the owner.
+                    -- Or chosen by itself
+  animal_type TEXT, -- type in {Dog, cat, mammoth, otter, parrot}
+  owner TEXT,
+  occupation TEXT,
+  is_pet BOOLEAN
+);
+-- We populate he Table as follows
+INSERT INTO Animal_Companions(animal_name,animal_type,owner,occupation,is_pet) VALUES
+('Scooby','dog','Shaggy','being cute',true),
+('Wilhelm','otter','Rike','being cute',true),
+('Mike','cat','Denis','being mean',true),
+('Manfred','mammoth',NULL,'being nonexistant',false),
+('Sad Dog','dog',NULL,'being cute',true);
+
+-------------------------------------------------------------------------------
+--a)
+--List every animal which is of animal_type dog.
+
+-------------------------------------------------------------------------------
+--b)
+--List all animals which are owned either by Rike or by Denis
+
+-------------------------------------------------------------------------------
+--c)
+--List every Animal which is a potential pet and not owned by anyone
+--The animal has to be cute.
+--Hint( check if some value is null:  t.val IS NULL)
